@@ -1,6 +1,7 @@
 # Dependency directories
 node_modules/
 bower_components/
+Day-2/node_modules/
 
 # Logs
 npm-debug.log*
