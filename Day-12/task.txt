@@ -1,0 +1,14 @@
+//REST API-jSON
+//mockaroo.com - To create fake json data
+
+GET/users - List all the users 
+GET/api/users - List all users jSON
+
+
+GET/users/api/1 or GET/users/api/2 - Get the user with id = 1 or 2
+
+POST/users - Create new user
+
+PATCH/user/api/1 - Edit the user with id = 1
+
+DELETE/user/api/1 - Delete the user with id = 1
