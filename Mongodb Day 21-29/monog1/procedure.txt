@@ -1,0 +1,80 @@
+Step 1: Import Mongoose
+const mongoose = require('mongoose');
+
+Mongoose is an ODM (Object Data Modeling) library.
+It helps Node.js communicate with MongoDB.
+
+Step 2: Create Schema
+Schema defines:
+   What fields exist?
+   What data type?
+   Any validations?
+
+const userSchema = new mongoose.Schema({
+    first_name: {
+        type: String,
+        required: true,
+    },
+    last_name: {
+        type: String,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    job_title: {
+        type: String,
+    },
+    gender: {
+        type: String,
+    },
+});
+
+Think: Schema = Blueprint of a document
+Like a class in OOP.
+
+Step 3: Create Model
+const User = mongoose.model('User', userSchema);
+
+Model is created from Schema.
+
+Think:
+Schema = Structure
+Model = Tool to interact with MongoDB
+
+Step 4: Connect to MongoDB
+
+mongoose.connect("mongodb://127.0.0.1:27017/youtube-app-1")
+
+
+Step 5 : Perform CRUD Operations
+a> Create 
+const user = await User.create({
+    first_name: "Rishav",
+    last_name: "Kumar",
+    email: "rishav@gmail.com",
+    gender: "Male",
+    job_title: "Student"
+});
+
+b> Read All
+const users = await User.find({});
+
+c>Read One User
+const user = await User.findById(id);
+
+d>Update
+const updatedUser =
+ await User.findByIdAndUpdate(
+    id,
+    {
+      job_title: "Backend Developer"
+    },
+    {
+      new: true
+    }
+ );
+
+e>Delete
+await User.findByIdAndDelete(id);

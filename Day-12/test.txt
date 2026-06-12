@@ -1,0 +1,42 @@
+How to use Monngo db :
+Schema - Define the structure
+   Schema - Model
+      Using model we perform the CRUD Operations.
+
+1. const mongoose = require('mongoose');
+
+2. Make a Schema :
+const userSchema  = new mongoose.Schema({
+    first_name:{
+        type:String,
+        required:true,
+    },
+    last_name:{
+        type:String,
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true,
+    },
+    job_title:{
+        type:String,
+    },
+    gender:{
+        type:String,
+    },
+});
+
+
+
+3.make a model:
+const User = mongoose.model('user',userSchema);
+
+4.Then connect to mongodb:
+mongoose.connect("mongodb://127.0.0.1.27017/youtube-app-1")
+.then(()=>{
+    console.log("Connected to MongoDB");
+})
+.catch((err)=>{
+    console.error("Error connecting to MongoDB",err);
+});

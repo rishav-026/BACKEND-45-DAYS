@@ -1,11 +1,42 @@
 const express = require('express');
 const users = require('./MOCK_DATA.json')
 const fs = require('fs');
+const mongoose = require('mongoose');
 
 const app = express();
 // app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+//Connect to MongoDB
+mongoose.connect("mongodb://127.0.0.1:27017/youtube-app-1")
+.then(()=>{
+    console.log("Connected to MongoDB");
+})
+.catch((err)=>{
+    console.error("Error connecting to MongoDB",err);
+});
+//Schema 
+const userSchema  = new mongoose.Schema({
+    first_name:{
+        type:String,
+        required:true,
+    },
+    last_name:{
+        type:String,
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true,
+    },
+    job_title:{
+        type:String,
+    },
+    gender:{
+        type:String,
+    },
+});
 
+const User = mongoose.model('user',userSchema);
 //Handler function
 app.use((req,res,next)=>{
     fs.appendFile('logs.txt',`\n${Date.now()}:${req.method}:${req.path}\n`,(err,data)=>{

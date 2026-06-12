@@ -1,10 +1,10 @@
 {
-  "name": "day-12",
+  "name": "mongodb-day-21-29",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
